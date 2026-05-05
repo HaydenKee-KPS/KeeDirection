@@ -1002,94 +1002,36 @@
 </section>
 
 <!-- BOOKING -->
-<section id="booking">
-  <div class="booking-info">
-    <p class="section-label">Book a Call</p>
-    <h2 class="section-title">Start with a free<br>Direction Call™</h2>
-    <p class="section-body">
-      30 minutes. 1-on-1 with Hayden. No pitch, no pressure. You leave with 3 clear insights about what's holding you back — and a plain path forward.
-    </p>
-    <br><br>
-    <ul class="what-to-expect">
-      <li class="wte-item">
-        <span class="wte-num">1</span>
-        <div>
-          <h5>You Share Where You Are</h5>
-          <p>Tell Hayden what's going on — career, money, mindset. No prep needed. Just show up.</p>
-        </div>
-      </li>
-      <li class="wte-item">
-        <span class="wte-num">2</span>
-        <div>
-          <h5>He Identifies What's Holding You Back</h5>
-          <p>Using the same frameworks from the programs, Hayden surfaces the 3 core blockers specific to you.</p>
-        </div>
-      </li>
-      <li class="wte-item">
-        <span class="wte-num">3</span>
-        <div>
-          <h5>You Leave with a Clear Path</h5>
-          <p>No vague advice. You'll walk away knowing exactly what to do next — whether that's enrolling or not.</p>
-        </div>
-      </li>
-    </ul>
-  </div>
-
-  <div class="booking-form-wrap">
-    <div id="booking-form-container">
-      <h3>Book Your Direction Call™</h3>
-      <p class="sub">Free · 30 minutes · No commitment required</p>
-
-      <div class="form-row">
-        <div class="form-group">
-          <label>First Name</label>
-          <input type="text" placeholder="Your first name">
-        </div>
-        <div class="form-group">
-          <label>Last Name</label>
-          <input type="text" placeholder="Your last name">
-        </div>
-      </div>
-      <div class="form-group">
-        <label>Email Address</label>
-        <input type="email" placeholder="you@email.com">
-      </div>
-      <div class="form-group">
-        <label>Age</label>
-        <input type="number" placeholder="e.g. 22" min="18" max="35">
-      </div>
-      <div class="form-group">
-        <label>Which best describes you?</label>
-        <select>
-          <option value="" disabled selected>Select a profile…</option>
-          <option>In college, questioning my direction</option>
-          <option>Graduate, feel stuck or lost</option>
-          <option>Skipped college, building my foundation</option>
-          <option>Parent booking for my child</option>
-          <option>Other</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>What's the biggest thing holding you back right now?</label>
-        <textarea placeholder="Be as honest as you'd like — this helps Hayden make your call more valuable."></textarea>
-      </div>
-      <div class="form-group">
-        <label>What program are you interested in? (optional)</label>
-        <select>
-          <option value="" disabled selected>Not sure yet / just exploring</option>
-          <option>The Quick Start™ — 30 Days ($188/wk or $675 upfront)</option>
-          <option>The Launch Plan™ — 60 Days ($157/wk or $1,125 upfront)</option>
-          <option>The Free Direction Call only</option>
-        </select>
-      </div>
-      <button class="form-submit" onclick="handleFormSubmit()">Request My Free Direction Call →</button>
+<section id="booking" style="display:block;padding:6rem 5rem;">
+  <div style="max-width:900px;margin:0 auto;">
+    <div style="text-align:center;margin-bottom:3rem;">
+      <p class="section-label" style="justify-content:center;">Book a Call</p>
+      <h2 class="section-title">Start with a free Direction Call™</h2>
+      <p class="section-body" style="margin:0 auto 1rem;">30 minutes. 1-on-1 with Hayden. No pitch, no pressure. Pick a time that works for you and show up — that's it.</p>
     </div>
-    <div class="form-success" id="form-success">
-      <div class="success-icon">✓</div>
-      <h4>Request Received!</h4>
-      <p>Hayden will reach out within 24 hours to confirm your Direction Call time. Check your email — and in the meantime, download the free guide below.</p>
-      <br>
-      <a href="#resources" class="btn-primary" style="display:inline-block">Download the Free Guide →</a>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-bottom:3rem;">
+      <div class="wte-item" style="flex-direction:column;text-align:center;padding:1.5rem;background:var(--white);border:1px solid var(--border);border-radius:4px;">
+        <span class="wte-num" style="margin-bottom:0.5rem;">1</span>
+        <h5>You Share Where You Are</h5>
+        <p>Career, money, mindset. No prep needed. Just show up.</p>
+      </div>
+      <div class="wte-item" style="flex-direction:column;text-align:center;padding:1.5rem;background:var(--white);border:1px solid var(--border);border-radius:4px;">
+        <span class="wte-num" style="margin-bottom:0.5rem;">2</span>
+        <h5>Hayden Finds What's Blocking You</h5>
+        <p>He surfaces the 3 core blockers specific to your situation.</p>
+      </div>
+      <div class="wte-item" style="flex-direction:column;text-align:center;padding:1.5rem;background:var(--white);border:1px solid var(--border);border-radius:4px;">
+        <span class="wte-num" style="margin-bottom:0.5rem;">3</span>
+        <h5>You Leave with a Clear Path</h5>
+        <p>You'll know exactly what to do next — whether you enroll or not.</p>
+      </div>
+    </div>
+
+    <!-- Calendly inline embed -->
+    <div style="border-radius:4px;overflow:hidden;min-height:700px;">
+      <div class="calendly-inline-widget" data-url="https://calendly.com/kps-hayden/30min?hide_gdpr_banner=1&primary_color=c9973a" style="min-width:320px;height:700px;"></div>
+      <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
     </div>
   </div>
 </section>
@@ -1132,14 +1074,6 @@
 </footer>
 
 <script>
-  // Booking form handler
-  function handleFormSubmit() {
-    const form = document.getElementById('booking-form-container');
-    const success = document.getElementById('form-success');
-    form.style.display = 'none';
-    success.style.display = 'block';
-  }
-
   // Smooth scroll offset for fixed nav
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
