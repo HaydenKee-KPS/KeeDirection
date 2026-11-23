@@ -19,7 +19,8 @@
   - money:     checkout or booking link for the Financial Literacy Session
   - bundle:    checkout or booking link for Job Search Starter Bundle
   - handbook:  checkout link for The Direction Handbook (Stripe, Gumroad, etc.)
-  - guide:     URL of the free "5 Decisions" PDF
+  - guide:     file name of the free "5 Decisions" PDF uploaded next to index.html
+  - FORM_KEY (below the LINKS list): your free Web3Forms access key, so guide sign-ups are emailed to you
   Any link left as "" falls back to the #booking section.
   ============================================================
 -->
@@ -197,6 +198,24 @@
   footer .logo{color:#fff}
   .legal{border-top:1px solid rgba(255,255,255,.1);padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.85rem}
 
+
+  /* Guide sign-up modal */
+  button.btn{cursor:pointer;font-family:inherit}
+  .gm{position:fixed;inset:0;z-index:100;background:rgba(22,26,56,.72);display:none;align-items:center;justify-content:center;padding:20px}
+  .gm.open{display:flex}
+  .gm-box{background:var(--cream);color:var(--ink);border-radius:var(--radius);max-width:460px;width:100%;padding:32px;position:relative;max-height:92vh;overflow:auto}
+  .gm-box h3{font-size:1.5rem;margin-bottom:6px}
+  .gm-box p{color:var(--muted);margin-bottom:18px;font-size:.97rem}
+  .gm-close{position:absolute;top:10px;right:12px;background:none;border:0;font-size:1.6rem;line-height:1;cursor:pointer;color:var(--ink);padding:8px}
+  .gm label{display:block;font-weight:600;font-size:.9rem;margin:12px 0 5px}
+  .gm input,.gm select{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:10px;font:inherit;background:#fff;color:var(--ink)}
+  .gm input:focus,.gm select:focus{outline:2px solid var(--accent);border-color:var(--accent)}
+  .gm .opt{font-weight:400;color:var(--muted)}
+  .gm .hp{position:absolute;left:-9999px}
+  .gm-err{color:#9b2c2c;font-size:.9rem;margin-top:10px;display:none}
+  .gm-done{display:none;text-align:center}
+  .gm-done .btn{margin-top:6px}
+
   /* Responsive */
   @media (max-width:900px){
     .hero-grid{grid-template-columns:1fr}
@@ -241,7 +260,7 @@
     <p class="lead">Most young adults get a diploma or nothing. No financial education. No career strategy. No roadmap. Kee Direction fills that gap with 1-on-1 coaching on career, school, and money.</p>
     <div class="ctas">
       <a href="#clarity" class="btn btn-primary" data-link="clarity">Book a $49 Clarity Session</a>
-      <a href="#guide" class="btn btn-ghost">Get the Free Guide</a>
+      <button type="button" class="btn btn-ghost" data-open-guide>Get the Free Guide</button>
     </div>
     <div class="badges">
       <div><strong>1-on-1</strong> Personal Coaching</div>
@@ -259,7 +278,7 @@
       <span class="eyebrow">Free Guide</span>
       <h2>The 5 Decisions That Define Your 20s</h2>
       <p style="margin-bottom:28px">Five calls you make in your 20s, whether you mean to or not. This guide helps you make them with purpose. Free, by Hayden Kee.</p>
-      <a href="#guide" class="btn btn-primary" data-link="guide" download>Download the Free Guide →</a>
+      <button type="button" class="btn btn-primary" data-open-guide>Get the Free Guide →</button>
     </div>
     <ol class="decisions">
       <li>Aim at Something</li>
@@ -499,7 +518,7 @@
       <div>
         <h4>Resources</h4>
         <ul>
-          <li><a href="#guide">The 5 Decisions (Free Guide)</a></li>
+          <li><a href="#guide" data-open-guide>The 5 Decisions (Free Guide)</a></li>
           <li><a href="#handbook">The Direction Handbook ($49)</a></li>
         </ul>
       </div>
@@ -511,6 +530,41 @@
   </div>
 </footer>
 
+
+<!-- FREE GUIDE SIGN-UP -->
+<div class="gm" id="guideModal" role="dialog" aria-modal="true" aria-labelledby="gmTitle">
+  <div class="gm-box">
+    <button type="button" class="gm-close" aria-label="Close" data-close-guide>×</button>
+    <form id="guideForm" novalidate>
+      <span class="eyebrow">Free Guide</span>
+      <h3 id="gmTitle">The 5 Decisions That Define Your 20s</h3>
+      <p>Tell us where to reach you and get instant access.</p>
+      <label for="gmName">First name</label>
+      <input id="gmName" name="name" autocomplete="given-name" required>
+      <label for="gmEmail">Email</label>
+      <input id="gmEmail" name="email" type="email" autocomplete="email" required>
+      <label for="gmPhone">Phone <span class="opt">(optional)</span></label>
+      <input id="gmPhone" name="phone" type="tel" autocomplete="tel">
+      <label for="gmStage">Where are you right now? <span class="opt">(optional)</span></label>
+      <select id="gmStage" name="stage">
+        <option value="">Choose one</option>
+        <option>In college, figuring out my path</option>
+        <option>Recent graduate</option>
+        <option>Working, building my foundation</option>
+        <option>I know my goal and want help getting there</option>
+      </select>
+      <input type="checkbox" name="botcheck" class="hp" tabindex="-1" aria-hidden="true">
+      <button type="submit" class="btn btn-primary btn-block" style="margin-top:20px">Send Me the Guide →</button>
+      <div class="gm-err" id="gmErr" role="alert">Something went wrong. Please check your info and try again.</div>
+    </form>
+    <div class="gm-done" id="guideDone">
+      <span class="eyebrow">You're in</span>
+      <h3>Your guide is ready.</h3>
+      <p>Thanks! Click below to download it now.</p>
+      <a class="btn btn-primary" id="gmDownload" href="5-decisions.pdf" download target="_blank" rel="noopener">Download the Guide →</a>
+    </div>
+  </div>
+</div>
 <script>
   // ===== Paste your real links here =====
   const LINKS = {
@@ -521,7 +575,7 @@
     money:     "",
     bundle:    "",
     handbook:  "",
-    guide:     ""   // e.g. "/5-decisions.pdf"
+    guide:     "5-decisions.pdf"   // the PDF file name in your GitHub repo
   };
   document.querySelectorAll('[data-link]').forEach(el => {
     const url = LINKS[el.dataset.link];
@@ -533,6 +587,45 @@
   document.querySelectorAll('.nav-links a').forEach(a =>
     a.addEventListener('click', () => document.querySelector('.nav-links').classList.remove('open'))
   );
+
+  // ===== Free guide sign-up =====
+  // Get a free access key at web3forms.com (enter kps.hayden@gmail.com) and paste it here.
+  const FORM_KEY = "c305469e-3328-4e57-bbed-0fdab8935b03";
+  const gm = document.getElementById('guideModal');
+  const gForm = document.getElementById('guideForm');
+  const gDone = document.getElementById('guideDone');
+  const gErr = document.getElementById('gmErr');
+  document.getElementById('gmDownload').href = LINKS.guide || '5-decisions.pdf';
+  const openGuide = e => { if (e) e.preventDefault(); gm.classList.add('open'); setTimeout(()=>document.getElementById('gmName').focus(),50); };
+  const closeGuide = () => gm.classList.remove('open');
+  document.querySelectorAll('[data-open-guide]').forEach(b => b.addEventListener('click', openGuide));
+  document.querySelectorAll('[data-close-guide]').forEach(b => b.addEventListener('click', closeGuide));
+  gm.addEventListener('click', e => { if (e.target === gm) closeGuide(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeGuide(); });
+  gForm.addEventListener('submit', async e => {
+    e.preventDefault();
+    gErr.style.display = 'none';
+    if (!gForm.checkValidity()) { gErr.textContent = 'Please enter your first name and a valid email.'; gErr.style.display = 'block'; return; }
+    const btn = gForm.querySelector('button[type=submit]');
+    btn.disabled = true; btn.textContent = 'Sending...';
+    const data = Object.fromEntries(new FormData(gForm));
+    try {
+      if (FORM_KEY) {
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST', headers: {'Content-Type':'application/json','Accept':'application/json'},
+          body: JSON.stringify({ access_key: FORM_KEY, subject: 'New free guide download: ' + data.name, from_name: 'Kee Direction website', ...data })
+        });
+        const out = await res.json();
+        if (!out.success) throw new Error(out.message || 'Failed');
+      } else {
+        console.warn('FORM_KEY is empty: sign-ups are not being emailed yet.');
+      }
+      gForm.style.display = 'none'; gDone.style.display = 'block';
+    } catch (err) {
+      gErr.textContent = 'Something went wrong. Please try again.'; gErr.style.display = 'block';
+      btn.disabled = false; btn.textContent = 'Send Me the Guide →';
+    }
+  });
 </script>
 </body>
 </html>
