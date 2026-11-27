@@ -222,6 +222,10 @@
   // Address of the Cloudflare Worker (see SETUP.md). No trailing slash.
   var SEATS_API = "https://purpose-built-seats.REPLACE-ME.workers.dev";
 
+  // Seats left to show until the automatic counter is set up.
+  // Change this number by hand after each sign-up (16, 15, 14...).
+  var MANUAL_SEATS_LEFT = 16;
+
   (function () {
     var params = new URLSearchParams(location.search);
     var soldOutAlert = document.querySelector("[data-alert-soldout]");
@@ -286,7 +290,7 @@
     // Until the Cloudflare counter is set up, show a static seat line and
     // send sign-ups to email instead of a checkout that doesn't exist yet.
     if (SEATS_API.indexOf("REPLACE-ME") !== -1) {
-      hideCounts();
+      render({ left: MANUAL_SEATS_LEFT, total: 16, soldOut: MANUAL_SEATS_LEFT <= 0 });
       checkout.addEventListener("click", function (e) {
         e.stopImmediatePropagation();
         e.preventDefault();
