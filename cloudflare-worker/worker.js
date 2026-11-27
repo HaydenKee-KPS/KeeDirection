@@ -107,7 +107,10 @@ export default {
         return res;
       } catch (err) {
         console.error(err);
-        return new Response(JSON.stringify({ error: "unavailable" }), {
+        // Square's reason (never includes the access token) to make setup easier.
+        const reason = String(err && err.message || err).slice(0, 500);
+        const hasToken = Boolean(env.SQUARE_ACCESS_TOKEN);
+        return new Response(JSON.stringify({ error: "unavailable", reason, tokenFound: hasToken }), {
           status: 502,
           headers: cors(env, { "Content-Type": "application/json" }),
         });
