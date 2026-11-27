@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Purpose Built | A 5-Week Class for Your 20s | Kee Direction</title>
+<meta name="description" content="Purpose Built is a 5-week, in-person class in Modesto for young adults. Walk out with a polished resume, a personalized budget, written goals, and real direction. Founding seats $99.">
+<meta property="og:title" content="Purpose Built | Founding Class">
+<meta property="og:description" content="5 weeks. 5 decisions. A polished resume, a personalized budget, written goals, and real direction. 16 founding seats at $99.">
+<meta property="og:image" content="https://keedirection.com/purpose-built/hayden.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1F2347; --navy-2: #2A2F5C; --gold: #C9A96A; --gold-dk: #7A6236;
+    --ivory: #F7F4EE; --line: #D5C9AE; --ink: #1F2347; --body: #3B3F5C; --muted: #5A5D73;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--ivory); color: var(--ink); font-family: Inter, system-ui, sans-serif; line-height: 1.5; }
+  a { color: var(--navy); }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+  .display { font-family: 'Archivo Black', sans-serif; font-weight: 400; letter-spacing: -0.01em; }
+  .eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-dk); }
+
+  /* Top bar */
+  .topbar { background: var(--navy); color: #fff; }
+  .topbar .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .brand { display: flex; align-items: center; gap: 10px; color: #fff; text-decoration: none; }
+  .brand-mark { font-family: 'Archivo Black', sans-serif; font-size: 26px; color: transparent; -webkit-text-stroke: 1.5px var(--gold); letter-spacing: -1px; }
+  .brand-name { font-size: 12px; font-weight: 600; letter-spacing: 0.3em; color: #D3D3E0; }
+  .topbar a.back { color: #D3D3E0; font-size: 14px; text-decoration: none; }
+
+  /* Hero */
+  .hero { position: relative; background: var(--navy); color: #fff; overflow: hidden; }
+  .hero-photo { position: absolute; top: 0; right: 0; bottom: 0; width: 46%; }
+  .hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 28%; display: block; }
+  .hero-photo::after { content: ""; position: absolute; inset: 0;
+    background: linear-gradient(90deg, var(--navy) 0%, rgba(31,35,71,.85) 12%, rgba(31,35,71,0) 42%),
+                linear-gradient(0deg, rgba(31,35,71,.8) 0%, rgba(31,35,71,0) 30%); }
+  .hero .wrap { position: relative; z-index: 1; padding-top: 56px; padding-bottom: 64px; }
+  .hero-copy { max-width: 520px; }
+  .badge { display: inline-block; background: var(--gold); color: var(--navy); font-weight: 700; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; padding: 7px 12px; border-radius: 4px; }
+  .hero h1 { font-size: clamp(52px, 9vw, 88px); line-height: 0.98; margin: 18px 0 16px; }
+  .hero h1 span { color: var(--gold); }
+  .hero p.lede { font-size: 19px; color: #E4E4EE; margin: 0 0 28px; max-width: 460px; }
+
+  /* Seat counter */
+  .seats { background: rgba(255,255,255,0.06); border: 1px solid rgba(201,169,106,0.45); border-radius: 12px; padding: 16px 18px; max-width: 420px; }
+  .seats-line { display: flex; align-items: baseline; gap: 10px; }
+  .seats-num { font-family: 'Archivo Black', sans-serif; font-size: 44px; line-height: 1; color: var(--gold); }
+  .seats-label { font-weight: 600; font-size: 16px; }
+  .bar { height: 8px; background: rgba(255,255,255,0.14); border-radius: 99px; margin-top: 12px; overflow: hidden; }
+  .bar > div { height: 100%; width: 0; background: var(--gold); border-radius: 99px; transition: width .6s ease; }
+  .seats-note { font-size: 13px; color: #B9BAD0; margin-top: 8px; }
+
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 56px; padding: 0 28px; border: 0; border-radius: 10px; background: var(--gold); color: var(--navy); font: 700 18px Inter, sans-serif; text-decoration: none; cursor: pointer; }
+  .btn:hover { background: #D8BC84; }
+  .btn[aria-disabled="true"] { background: #CFCBC2; color: #6B6E80; cursor: not-allowed; }
+  .hero .btn { margin-top: 20px; }
+
+  /* Sections */
+  section.block { padding: 64px 0; }
+  h2 { font-size: clamp(30px, 5vw, 42px); line-height: 1.1; margin: 8px 0 28px; }
+  .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 32px; }
+  .outcome { display: flex; gap: 14px; align-items: flex-start; background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 18px; }
+  .outcome h3 { margin: 0; font-size: 18px; }
+  .outcome p { margin: 2px 0 0; color: var(--body); font-size: 15px; }
+
+  .sessions { list-style: none; padding: 0; margin: 0; }
+  .sessions li { display: flex; gap: 18px; align-items: baseline; padding: 16px 0; border-bottom: 1px solid var(--line); }
+  .sessions .n { font-family: 'Archivo Black', sans-serif; color: var(--gold-dk); font-size: 20px; width: 34px; flex: none; }
+  .sessions h3 { margin: 0; font-size: 19px; }
+  .sessions p { margin: 2px 0 0; color: var(--body); font-size: 15px; }
+
+  .details { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+  .details > div { border-top: 3px solid var(--navy); padding-top: 10px; }
+  .details strong { display: block; font-size: 18px; margin-top: 2px; }
+  .details span { color: var(--body); font-size: 15px; }
+
+  /* Sign-up card */
+  .signup { background: var(--navy); color: #fff; position: relative; overflow: hidden; }
+  .card { background: #fff; color: var(--ink); border-radius: 16px; padding: 32px; max-width: 560px; margin: 0 auto; box-shadow: 0 20px 50px rgba(10,12,30,.35); }
+  .price { display: flex; align-items: baseline; gap: 12px; margin: 6px 0 4px; }
+  .price .now { font-family: 'Archivo Black', sans-serif; font-size: 64px; line-height: 1; }
+  .price .was { font-size: 20px; color: var(--muted); text-decoration: line-through; }
+  .card ul { padding-left: 20px; color: var(--body); margin: 16px 0; }
+  .card li { margin: 4px 0; }
+  .consent { display: flex; gap: 12px; align-items: flex-start; background: var(--ivory); border: 1px solid var(--line); border-radius: 10px; padding: 14px; margin: 18px 0; font-size: 15px; color: var(--body); }
+  .consent input { width: 22px; height: 22px; margin: 1px 0 0; accent-color: var(--navy); flex: none; }
+  .card .btn { width: 100%; }
+  .card .fine { font-size: 13px; color: var(--muted); margin: 12px 0 0; text-align: center; }
+  .card .seats-inline { font-weight: 700; color: var(--gold-dk); }
+  .alert { border-radius: 10px; padding: 14px 16px; margin-bottom: 16px; font-size: 15px; display: none; }
+  .alert.show { display: block; }
+  .alert.warn { background: #FFF4E0; border: 1px solid #E5C27A; color: #5B4210; }
+
+  .faq details { border-bottom: 1px solid var(--line); padding: 16px 0; }
+  .faq summary { font-weight: 700; font-size: 17px; cursor: pointer; }
+  .faq p { color: var(--body); margin: 10px 0 0; }
+
+  footer { background: var(--navy); color: #B9BAD0; font-size: 14px; padding: 28px 0; }
+  footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; }
+  footer a { color: #D3D3E0; }
+
+  @media (max-width: 760px) {
+    .hero-photo { position: relative; width: 100%; height: 360px; }
+    .hero-photo::after { background: linear-gradient(0deg, var(--navy) 0%, rgba(31,35,71,.6) 25%, rgba(31,35,71,0) 55%); }
+    .hero .wrap { padding-top: 0; margin-top: -90px; }
+    .grid-2, .details { grid-template-columns: minmax(0, 1fr); }
+    .card { padding: 24px 20px; }
+    section.block { padding: 48px 0; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="/"><span class="brand-mark">KD</span><span class="brand-name">KEE DIRECTION</span></a>
+    <a class="back" href="/">keedirection.com</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-photo"><img src="/purpose-built/hayden.jpg" alt="Hayden Kee, founder of Kee Direction"></div>
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="badge">Founding Class</span>
+      <h1 class="display">Purpose<br><span>Built.</span></h1>
+      <p class="lede">A 5-week, in-person class for your 20s. Real tools, a written plan, and the confidence to act on it.</p>
+
+      <div class="seats" aria-live="polite">
+        <div class="seats-line"><span class="seats-num" data-seats-left>16</span><span class="seats-label">of <span data-seats-total>16</span> founding seats left</span></div>
+        <div class="bar" aria-hidden="true"><div data-seats-bar></div></div>
+        <div class="seats-note" data-seats-note>$99 founding price. Goes up when these are gone.</div>
+      </div>
+      <a class="btn" href="#signup">Claim my seat</a>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <div class="eyebrow">You walk out with</div>
+    <h2 class="display">Four things most people never get in their 20s.</h2>
+    <div class="grid-2">
+      <div class="outcome"><svg aria-hidden="true" width="30" height="30" viewBox="0 0 26 26"><circle cx="13" cy="13" r="13" fill="#1F2347"/><path d="M7.5 13.5l3.6 3.6 7.4-7.6" fill="none" stroke="#C9A96A" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><div><h3>A polished resume</h3><p>And the skills to tailor it for any job you go after.</p></div></div>
+      <div class="outcome"><svg aria-hidden="true" width="30" height="30" viewBox="0 0 26 26"><circle cx="13" cy="13" r="13" fill="#1F2347"/><path d="M7.5 13.5l3.6 3.6 7.4-7.6" fill="none" stroke="#C9A96A" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><div><h3>A personalized budget</h3><p>And a financial plan built on your real numbers.</p></div></div>
+      <div class="outcome"><svg aria-hidden="true" width="30" height="30" viewBox="0 0 26 26"><circle cx="13" cy="13" r="13" fill="#1F2347"/><path d="M7.5 13.5l3.6 3.6 7.4-7.6" fill="none" stroke="#C9A96A" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><div><h3>Written, defined goals</h3><p>For 1 month, 1 year, and 5 years. On paper, not in your head.</p></div></div>
+      <div class="outcome"><svg aria-hidden="true" width="30" height="30" viewBox="0 0 26 26"><circle cx="13" cy="13" r="13" fill="#1F2347"/><path d="M7.5 13.5l3.6 3.6 7.4-7.6" fill="none" stroke="#C9A96A" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><div><h3>Confidence and direction</h3><p>You'll know your next move, and why it's the right one.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" style="padding-top: 0">
+  <div class="wrap">
+    <div class="eyebrow">One decision a week</div>
+    <h2 class="display">5 weeks. 5 decisions.</h2>
+    <ol class="sessions">
+      <li><span class="n">01</span><div><h3>Aim at Something</h3><p>Set and write your 1-month, 1-year, and 5-year goals.</p></div></li>
+      <li><span class="n">02</span><div><h3>Master Your Money</h3><p>Build your personalized budget and financial plan.</p></div></li>
+      <li><span class="n">03</span><div><h3>Career Fit, Not Pressure</h3><p>Find your fit, then build a resume a hiring manager actually reads.</p></div></li>
+      <li><span class="n">04</span><div><h3>Choose Your People</h3><p>Audit your circle and reach out to a mentor.</p></div></li>
+      <li><span class="n">05</span><div><h3>Action Over Ready</h3><p>Lock in your plan and take the first step before you leave.</p></div></li>
+    </ol>
+
+    <div class="details" style="margin-top: 40px">
+      <div><div class="eyebrow">When</div><strong>TBD</strong><span>5 weekly sessions, about 90 minutes each</span></div>
+      <div><div class="eyebrow">Where</div><strong>TBD</strong><span>Modesto, CA. In person.</span></div>
+      <div><div class="eyebrow">Who</div><strong>Ages 18 to 28</strong><span>Students, grads, and anyone deciding what's next</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="block signup" id="signup">
+  <div class="wrap">
+    <div class="card">
+      <div class="alert warn" data-alert-soldout>The founding seats are gone. Email <a href="mailto:kps.hayden@gmail.com">kps.hayden@gmail.com</a> to get on the list for the next class.</div>
+      <div class="alert warn" data-alert-error>Checkout didn't load. Try again, or text Hayden at 209.202.5346.</div>
+      <div class="eyebrow">Founding price</div>
+      <div class="price"><span class="now">$99</span><span class="was">$199</span></div>
+      <div><span class="seats-inline"><span data-seats-left>16</span> of <span data-seats-total>16</span> seats left.</span> Two groups of 8. The price goes up after the founding class.</div>
+      <ul>
+        <li>5 in-person sessions with Hayden Kee</li>
+        <li>The 5 Decisions Workbook and a starter budget spreadsheet</li>
+        <li>A group chat to keep you accountable between sessions</li>
+      </ul>
+      <label class="consent">
+        <input type="checkbox" data-consent>
+        <span>I understand founding sessions are filmed to build the online version of this class, and I agree to share feedback when it's done.</span>
+      </label>
+      <a class="btn" href="#" data-checkout aria-disabled="true">Claim my seat for $99</a>
+      <p class="fine">Secure checkout by Square. Full payment holds your seat.</p>
+    </div>
+  </div>
+</section>
+
+<section class="block faq">
+  <div class="wrap" style="max-width: 760px">
+    <div class="eyebrow">Questions</div>
+    <h2 class="display">Before you sign up</h2>
+    <details><summary>Who is this for?</summary><p>Young adults, roughly 18 to 28, who feel stuck, don't know what's next, or know their goal and want help getting there.</p></details>
+    <details><summary>What if I miss a session?</summary><p>Let Hayden know ahead of time. You'll get that week's worksheet so you can catch up before the next session.</p></details>
+    <details><summary>Why is it only $99?</summary><p>You're in the founding class. You get the lowest price it will ever be, and in return you help shape the class with your feedback.</p></details>
+    <details><summary>Who teaches it?</summary><p>Hayden Kee. He's a hiring manager who has interviewed hundreds of candidates, coached recent grads into careers, and teaches practical money skills that work in real life.</p></details>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>&copy; Kee Direction &middot; Your next move, with purpose.</div>
+    <div>209.202.5346 &middot; <a href="mailto:kps.hayden@gmail.com">kps.hayden@gmail.com</a></div>
+  </div>
+</footer>
+
+<script>
+  // Address of the Cloudflare Worker (see SETUP.md). No trailing slash.
+  var SEATS_API = "https://purpose-built-seats.REPLACE-ME.workers.dev";
+
+  (function () {
+    var params = new URLSearchParams(location.search);
+    var soldOutAlert = document.querySelector("[data-alert-soldout]");
+    var errorAlert = document.querySelector("[data-alert-error]");
+    var consent = document.querySelector("[data-consent]");
+    var checkout = document.querySelector("[data-checkout]");
+    var soldOut = false;
+
+    if (params.get("error")) { errorAlert.classList.add("show"); }
+
+    function setButton() {
+      var ready = consent.checked && !soldOut;
+      checkout.setAttribute("aria-disabled", ready ? "false" : "true");
+      checkout.textContent = soldOut ? "Sold out" : "Claim my seat for $99";
+    }
+
+    function render(data) {
+      var left = data.left, total = data.total;
+      soldOut = !!data.soldOut;
+      document.querySelectorAll("[data-seats-left]").forEach(function (el) { el.textContent = left; });
+      document.querySelectorAll("[data-seats-total]").forEach(function (el) { el.textContent = total; });
+      var bar = document.querySelector("[data-seats-bar]");
+      if (bar) bar.style.width = Math.round(((total - left) / total) * 100) + "%";
+      var note = document.querySelector("[data-seats-note]");
+      if (soldOut) {
+        note.textContent = "Founding class is full.";
+        soldOutAlert.classList.add("show");
+      } else if (left <= 5) {
+        note.textContent = "Almost gone. $99 founding price ends when these are taken.";
+      }
+      setButton();
+    }
+
+    function hideCounts() {
+      // If the counter can't load, don't show a wrong number.
+      document.querySelector(".seats-line").innerHTML = '<span class="seats-label">16 founding seats. Limited spots.</span>';
+      document.querySelector(".bar").style.display = "none";
+      var inline = document.querySelector(".seats-inline");
+      if (inline) inline.textContent = "Only 16 founding seats.";
+    }
+
+    function load() {
+      fetch(SEATS_API + "/seats", { cache: "no-store" })
+        .then(function (r) { if (!r.ok) throw new Error(); return r.json(); })
+        .then(render)
+        .catch(hideCounts);
+    }
+
+    if (params.get("soldout")) { soldOut = true; soldOutAlert.classList.add("show"); }
+
+    consent.addEventListener("change", setButton);
+    checkout.addEventListener("click", function (e) {
+      e.preventDefault();
+      if (checkout.getAttribute("aria-disabled") === "true") {
+        if (!consent.checked && !soldOut) consent.focus();
+        return;
+      }
+      checkout.textContent = "Opening secure checkout...";
+      location.href = SEATS_API + "/checkout";
+    });
+
+    // Until the Cloudflare counter is set up, show a static seat line and
+    // send sign-ups to email instead of a checkout that doesn't exist yet.
+    if (SEATS_API.indexOf("REPLACE-ME") !== -1) {
+      hideCounts();
+      checkout.addEventListener("click", function (e) {
+        e.stopImmediatePropagation();
+        e.preventDefault();
+        if (checkout.getAttribute("aria-disabled") === "true") { consent.focus(); return; }
+        location.href = "mailto:kps.hayden@gmail.com?subject=" + encodeURIComponent("Purpose Built founding seat") +
+          "&body=" + encodeURIComponent("Hi Hayden, I want a founding seat in Purpose Built. My name and phone number:");
+      }, true);
+      setButton();
+      return;
+    }
+
+    setButton();
+    load();
+    setInterval(load, 60000);
+  })();
+</script>
+</body>
+</html>
